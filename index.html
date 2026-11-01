@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compiler Studio | Compiler Design Lab</title>
+
+    <!-- CSS connection -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- JavaScript connection -->
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+
+<body>
+<div class="app-shell">
+
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">&lt;/&gt;</div>
+            <div class="brand-copy">
+                <h2>Compiler Studio</h2>
+                <p>Compiler Design Lab</p>
+            </div>
+        </div>
+
+        <p class="section-label">WORKSPACE</p>
+
+        <nav class="side-nav">
+            <button type="button" class="nav active" data-phase="overview">
+                <span class="nav-icon">⌂</span>
+                <span>Overview</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="source">
+                <span class="nav-icon">⌨</span>
+                <span>Source Code</span>
+            </button>
+        </nav>
+
+        <p class="section-label phase-label">COMPILER PHASES</p>
+
+        <nav class="side-nav">
+            <button type="button" class="nav" data-phase="lexical">
+                <span class="nav-icon">01</span>
+                <span>Lexical Analysis</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="syntax">
+                <span class="nav-icon">02</span>
+                <span>Syntax Analysis</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="semantic">
+                <span class="nav-icon">03</span>
+                <span>Semantic Analysis</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="intermediate">
+                <span class="nav-icon">04</span>
+                <span>Intermediate Code</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="control">
+                <span class="nav-icon">05</span>
+                <span>Control Flow</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="optimization">
+                <span class="nav-icon">06</span>
+                <span>Code Optimization</span>
+            </button>
+
+            <button type="button" class="nav" data-phase="target">
+                <span class="nav-icon">07</span>
+                <span>Target Code</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="online">
+                <span></span> Local workspace
+            </div>
+            <p>Interactive compiler learning environment</p>
+        </div>
+
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-area">
+
+        <!-- Top navigation bar -->
+        <header class="topbar">
+            <div class="breadcrumb">
+                Workspace <span>/</span>
+                <strong>Compiler Visualization</strong>
+            </div>
+
+            <div class="topbar-right">
+                <span class="environment-dot"></span>
+                <span>Python + Flask</span>
+                <span class="version">LOCAL APP</span>
+            </div>
+        </header>
+
+        <div class="workspace">
+
+            <!-- ========== HERO SECTION ========== -->
+            <section class="hero" id="overview">
+
+                <div class="hero-copy">
+                    <span class="eyebrow">COMPILER DESIGN PROJECT</span>
+
+                    <h1>Compiler Visualization Tool</h1>
+
+                    <p>
+                        Explore how source code transforms into target
+                        instructions, one phase at a time.
+                    </p>
+                </div>
+
+                <div class="hero-graphic" aria-hidden="true">
+                    <div class="hero-symbol">&lt;/&gt;</div>
+                    <div class="hero-orbit orbit-one"></div>
+                    <div class="hero-orbit orbit-two"></div>
+                </div>
+
+            </section>
+
+            <!-- ========== COMPILER PIPELINE ========== -->
+            <section class="pipeline-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Compilation Pipeline</h2>
+                        <p>Follow the stages of a compiler</p>
+                    </div>
+
+                    <span class="mini-label">7 CORE STAGES</span>
+                </div>
+
+                <div class="pipeline">
+
+                    <div class="pipeline-step">
+                        <span class="step-number">01</span>
+                        <span>Lexical</span>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="pipeline-step">
+                        <span class="step-number">02</span>
+                        <span>Syntax</span>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="pipeline-step">
+                        <span class="step-number">03</span>
+                        <span>Semantic</span>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="pipeline-step">
+                        <span class="step-number">04</span>
+                        <span>Intermediate</span>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="pipeline-step">
+                        <span class="step-number">05</span>
+                        <span>Control Flow</span>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="pipeline-step">
+                        <span class="step-number">06</span>
+                        <span>Optimize</span>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="pipeline-step">
+                        <span class="step-number">07</span>
+                        <span>Target</span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ========== EDITOR AND STATUS ========== -->
+            <section class="dashboard-grid">
+
+                <!-- Source code editor -->
+                <article class="panel editor-panel" id="sourcePanel">
+
+                    <div class="panel-heading">
+                        <div class="heading-title">
+                            <span class="heading-icon">⌘</span>
+
+                            <div>
+                                <h2>Source Code Editor</h2>
+                                <p>Write or load a program to begin analysis</p>
+                            </div>
+                        </div>
+
+                        <span class="tag">SOURCE INPUT</span>
+                    </div>
+
+                    <div class="editor-toolbar">
+                        <div>
+                            <span class="file-dot"></span>
+                            <span>source.c</span>
+                        </div>
+
+                        <span>Mini C-like language</span>
+                    </div>
+
+                    <div class="editor-wrap">
+
+                        <div class="line-numbers" id="lineNumbers">1</div>
+
+                        <textarea
+                            id="source"
+                            spellcheck="false"
+                            autocapitalize="off"
+                            autocomplete="off"
+                            aria-label="Source code editor"
+                            placeholder="int a;&#10;int b;&#10;a = 10;&#10;b = a + 5;&#10;print(b);"></textarea>
+
+                    </div>
+
+                    <p class="editor-hint">
+                        <span>ⓘ</span>
+                        Enter source code and analyze it through the compiler.
+                    </p>
+
+                    <div class="editor-actions">
+
+                        <button type="button"
+                                id="runBtn"
+                                class="btn btn-primary">
+                            <span>▶</span> Analyze Compiler
+                        </button>
+
+                        <button type="button"
+                                id="exampleBtn"
+                                class="btn btn-secondary">
+                            Load Example
+                        </button>
+
+                        <button type="button"
+                                id="clearBtn"
+                                class="btn btn-ghost">
+                            Clear
+                        </button>
+
+                    </div>
+                </article>
+
+                <!-- Compilation status -->
+                <aside class="panel status-panel">
+
+                    <div class="panel-heading">
+                        <div class="heading-title">
+                            <span class="heading-icon status-heading-icon">◉</span>
+
+                            <div>
+                                <h2>Compilation Status</h2>
+                                <p>Live analysis overview</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-body">
+
+                        <div class="status-pill">
+                            <span class="status-dot"></span>
+                            <strong id="statusTitle">Ready to analyze</strong>
+                        </div>
+
+                        <p id="status" class="status-description">
+                            Enter a program and click Analyze Compiler.
+                        </p>
+
+                        <div class="metrics-grid">
+
+                            <div class="metric">
+                                <span class="metric-icon">⌁</span>
+                                <small>Tokens</small>
+                                <strong id="tokenCount">0</strong>
+                            </div>
+
+                            <div class="metric">
+                                <span class="metric-icon">♙</span>
+                                <small>Variables</small>
+                                <strong id="variableCount">0</strong>
+                            </div>
+
+                            <div class="metric">
+                                <span class="metric-icon">▦</span>
+                                <small>Basic Blocks</small>
+                                <strong id="blockCount">0</strong>
+                            </div>
+
+                            <div class="metric">
+                                <span class="metric-icon">↳</span>
+                                <small>Target Instructions</small>
+                                <strong id="instructionCount">0</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="status-note">
+                            <strong>Learning tip</strong>
+                            <p>
+                                Run your program and select the compiler
+                                phases to explore each result.
+                            </p>
+                        </div>
+
+                    </div>
+                </aside>
+
+            </section>
+
+            <!-- ========== COMPILER RESULTS ========== -->
+            <section class="panel results-panel" id="resultsPanel">
+
+                <div class="panel-heading results-heading">
+
+                    <div class="heading-title">
+                        <span class="heading-icon results-heading-icon">▤</span>
+
+                        <div>
+                            <h2 id="phaseTitle">Compiler Phase Results</h2>
+
+                            <p id="phaseDesc">
+                                Run your program to explore the generated output.
+                            </p>
+                        </div>
+                    </div>
+
+                    <span class="tag">ANALYSIS OUTPUT</span>
+
+                </div>
+
+                <!-- JavaScript creates the phase buttons here -->
+                <div id="phaseNav"
+                     class="phase-nav"
+                     aria-label="Result phases">
+                    <button type="button" data-index="0">
+                        Lexical Analysis
+                    </button>
+                </div>
+
+                <!-- JavaScript displays each phase result here -->
+                <div id="phaseContent" class="phase-content">
+
+                    <div class="empty-state">
+                        <div class="empty-icon">&lt;/&gt;</div>
+
+                        <h3>Ready to compile</h3>
+
+                        <p>
+                            Your compiler results will appear here.
+                            Load the example program or enter your own code,
+                            then click Analyze Compiler.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Previous and next phase controls -->
+                <div class="result-controls">
+
+                    <button type="button"
+                            id="prevBtn"
+                            class="btn btn-secondary"
+                            disabled>
+                        ← Previous Phase
+                    </button>
+
+                    <span id="phaseCounter">Phase 1 of 12</span>
+
+                    <button type="button"
+                            id="nextBtn"
+                            class="btn btn-secondary">
+                        Next Phase →
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- ========== FOOTER ========== -->
+            <footer class="footer">
+                Compiler Studio <span>•</span>
+                Compiler Design Learning Environment
+            </footer>
+
+        </div>
+    </main>
+</div>
+</body>
+</html>
